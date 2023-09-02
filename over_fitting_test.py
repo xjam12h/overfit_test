@@ -27,8 +27,6 @@ x = np.linspace(0, 1, N).reshape(N, 1)
 # データtの列ベクトル
 t = np.sin(12*np.pi*x.T)+x.T*6 + np.random.normal(0, 0.5, N)
 t = t.reshape(N, 1)
-t_d=pd.DataFrame(data=t,columns=[0])
-# print(t_d.head())
 
 # 行列Phiを作成
 Phi = np.empty((N, M))
@@ -36,11 +34,6 @@ Phi = np.empty((N, M))
 for i in range(M):
     Phi[:, i] = x.reshape(1, N) ** i
 
-Phi_d=pd.DataFrame(data=Phi,columns=[i for i in range(M)])
-# print(Phi_d.head())
-
-column_name=[i for i in range(M)]
-print(Phi_d[column_name].loc[:TRAIN_N],t_d[[0]].loc[:TRAIN_N])
 
 print(Phi[:TRAIN_N,:].shape)
 
